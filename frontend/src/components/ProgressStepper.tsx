@@ -114,9 +114,6 @@ export const ProgressStepper: React.FC<ProgressStepperProps> = ({ status, progre
           </div>
           <div className="space-y-2">
             <h3 className="text-xl font-bold text-green-700 dark:text-green-300">Success! Your assignment is ready</h3>
-            <p className="text-green-600 dark:text-green-400">
-              The AI agent has successfully processed and solved your assignment
-            </p>
           </div>
           <Button
             asChild

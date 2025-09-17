@@ -1,5 +1,3 @@
-// utils/llmService.ts
-
 import { GoogleGenerativeAI } from '@google/generative-ai';
 
 // Initialize the SDK with your API key from environment variables

@@ -10,7 +10,7 @@ const llm = new ChatGoogleGenerativeAI({ apiKey: process.env.GEMINI_API_KEY, mod
 
 // generating embeddings
 const embeddings = new MistralAIEmbeddings({
-    apiKey : "s8hY4pcHF9PKfRoFlDk8IdKgKi8oDF9g",
+    apiKey : process.env.MISTRAL_API_KEY,
     model: "mistral-embed"
 })
 

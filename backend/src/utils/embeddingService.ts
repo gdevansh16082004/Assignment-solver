@@ -1,4 +1,3 @@
-// src/utils/embeddingService.ts
 import { Mistral } from '@mistralai/mistralai';
 
 const apiKey = process.env.MISTRAL_API_KEY;
@@ -9,11 +8,6 @@ if (!apiKey) {
 
 const client = new Mistral({ apiKey });
 
-/**
- * Generates embeddings for a batch of text chunks in a single API call.
- * @param texts - An array of strings to embed.
- * @returns A promise that resolves to an array of embedding vectors.
- */
 export async function getBatchEmbeddings(texts: string[]): Promise<number[][]> {
   if (!texts || texts.length === 0) {
     return [];
