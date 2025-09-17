@@ -18,10 +18,10 @@ The entire process is handled asynchronously to provide a smooth, non-blocking u
 
 ## ✨ Key Features
 
-* [cite_start]**Automated Question Answering:** Automates the manual task of solving academic assignments[cite: 86].
-* [cite_start]**RAG (Retrieval-Augmented Generation):** The agent uses the assignment document as its own knowledge base to provide context-aware answers[cite: 90].
+* **Automated Question Answering:** Automates the manual task of solving academic assignments.
+* **RAG (Retrieval-Augmented Generation):** The agent uses the assignment document as its own knowledge base to provide context-aware answers.
 * **Asynchronous Job Processing:** Uses a BullMQ queue to handle long-running AI tasks, ensuring the UI is always responsive.
-* [cite_start]**Agent Plan Monitoring:** The user interface features a stepper that visualizes the agent's multi-step plan in real-time[cite: 91].
+* **Agent Plan Monitoring:** The user interface features a stepper that visualizes the agent's multi-step plan in real-time.
 * **High-Quality PDF Generation:** Creates clean, well-formatted PDF documents with support for raw LaTeX for mathematical formulas.
 
 ---
@@ -54,7 +54,6 @@ graph TD
     D -- 5. Calls Models --> F
     D -- 6. Calls Models --> E
 ```
-*For a detailed breakdown, please see the `DESIGN.md` document.*
 
 ---
 
