@@ -26,37 +26,6 @@ The entire process is handled asynchronously to provide a smooth, non-blocking u
 
 ---
 
-## 🏗️ System Architecture
-
-The application uses a decoupled, asynchronous architecture to separate the user-facing API from the heavy AI processing.
-
-```mermaid
-graph TD
-    subgraph "User's Browser"
-        A[React Frontend]
-    end
-
-    subgraph "Backend Services"
-        B[Express API Server] -- 2. Adds Job --> C[Redis / BullMQ]
-        D[Node.js Worker] -- 3. Listens for Jobs --> C
-    end
-
-    subgraph "External Services & Databases"
-        E[Gemini API for Generation]
-        F[Mistral API for Embeddings]
-        G[Qdrant Vector DB]
-    end
-
-    A -- 1. Uploads File --> B
-    B -- 10. Returns JobID --> A
-    A -- 11. Polls Status --> B
-    D -- 4. Creates Knowledge Base --> G
-    D -- 5. Calls Models --> F
-    D -- 6. Calls Models --> E
-```
-
----
-
 ## 🛠️ Technology Stack
 
 | Component | Technology | Reason |
