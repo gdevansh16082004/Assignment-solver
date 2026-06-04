@@ -23,7 +23,7 @@ export const useAssignmentSolver = () => {
                     if(data.state === 'completed'){
                         setStatus('completed');
                         const fileName = data.result.outputFilePath.split(/[/\\]/).pop(); // Handles both / and \ separators
-                        setResultUrl(`http://localhost:5000/api/download/${fileName}`);
+                        setResultUrl(`https://assignment-backend-edyk.onrender.com/api/download/${fileName}`);
                         if(pollingRef.current) clearInterval(pollingRef.current);
                     }else if(data.state === 'failed'){
                         setStatus('failed');
