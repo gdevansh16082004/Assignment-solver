@@ -8,20 +8,24 @@ import { splitIntoQuestionsWithGemini } from './utils/questionExtractor';
 
 const llm = new ChatGoogleGenerativeAI({
     apiKey: process.env.GEMINI_API_KEY,
-    model: "gemini-1.5-flash-latest",
+    model: "gemini-pro-latest",
 });
 
-const connection = { host: '127.0.0.1', port: 6379 };
+import type { ConnectionOptions } from 'bullmq';
+
+const connection: ConnectionOptions = process.env.REDIS_URL
+    ? { url: process.env.REDIS_URL }
+    : { host: '127.0.0.1', port: 6379 };
 
 const worker = new Worker('assignment-processing', async job => {
     const { filePath } = job.data;
     console.log(`Processing job ${job.id} for file: ${filePath}`);
 
-    try {
+    try{
         console.log('Extracting questions...');
         await job.updateProgress(10);
         const questions = await splitIntoQuestionsWithGemini(filePath);
-        if (!questions || questions.length === 0) {
+        if(!questions || questions.length === 0){
             throw new Error("No questions were extracted from the document.");
         }
         await job.updateProgress(30);
@@ -58,9 +62,9 @@ const worker = new Worker('assignment-processing', async job => {
         fs.unlinkSync(filePath);
         return { outputFilePath };
 
-    } catch (error) {
+    }catch(error){
         console.error(`Job ${job.id} failed`, error);
-        if (fs.existsSync(filePath)) {
+        if(fs.existsSync(filePath)){
             fs.unlinkSync(filePath);
         }
         throw error;

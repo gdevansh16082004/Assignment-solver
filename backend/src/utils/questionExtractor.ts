@@ -5,7 +5,7 @@ import fs from 'fs';
 // Initializing the Gemini model
 const llm = new ChatGoogleGenerativeAI({
     apiKey: process.env.GEMINI_API_KEY,
-    model: "gemini-1.5-flash-latest",
+    model: "gemini-pro-latest",
     temperature: 0.1,
 });
 
@@ -36,21 +36,21 @@ export async function splitIntoQuestionsWithGemini(filePath: string): Promise<Qu
         ${pdfText}
     `;
 
-    try {
+    try{
         console.log('Sending prompt to Gemini...');
         const response = await llm.invoke(prompt);
         const responseText = response.content.toString();
 
         // extracting json
         const jsonMatch = responseText.match(/\[.*\]/s);
-        if (!jsonMatch) {
+        if(!jsonMatch){
             throw new Error("Gemini did not return a valid JSON array. Response was: " + responseText);
         }
         
         const jsonString = jsonMatch[0];
         return JSON.parse(jsonString);
 
-    } catch (error) {
+    }catch(error){
         console.error("Failed to parse questions with Gemini:", error);
         throw new Error("Could not extract questions from the document using Gemini.");
     }

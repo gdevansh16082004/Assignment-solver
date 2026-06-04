@@ -1,12 +1,13 @@
 import React from 'react';
 import { FiUploadCloud } from 'react-icons/fi';
 
-interface FileUploadProps {
+interface FileUploadProps{
     file: File | null;
     setFile: (file: File | null) => void;
     onSubmit: () => void;
     isLoading: boolean;
 }
+
 
 export const FileUpload: React.FC<FileUploadProps> = ({ file, setFile, onSubmit, isLoading }) => {
     const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {

@@ -11,56 +11,54 @@ export const useAssignmentSolver = () => {
     const [resultUrl, setResultUrl] = useState<string | null>(null);
     const [error, setError] = useState<string | null>(null);
 
-    // ✅ FIX: The ref can hold a number OR null, and must be initialized to null.
     const pollingRef = useRef<number | null>(null);
 
     useEffect(() => {
-        if (jobId && status === 'processing') {
-            // Note: We use window.setInterval to be explicit that this is browser-side
+        if(jobId && status === 'processing'){
             pollingRef.current = window.setInterval(async () => {
-                try {
+                try{
                     const data = await getJobStatus(jobId);
                     setProgress(data.progress || 0);
 
-                    if (data.state === 'completed') {
+                    if(data.state === 'completed'){
                         setStatus('completed');
                         const fileName = data.result.outputFilePath.split(/[/\\]/).pop(); // Handles both / and \ separators
                         setResultUrl(`http://localhost:5000/api/download/${fileName}`);
-                        if (pollingRef.current) clearInterval(pollingRef.current);
-                    } else if (data.state === 'failed') {
+                        if(pollingRef.current) clearInterval(pollingRef.current);
+                    }else if(data.state === 'failed'){
                         setStatus('failed');
                         setError(data.failedReason || 'An unknown error occurred.');
-                        if (pollingRef.current) clearInterval(pollingRef.current);
+                        if(pollingRef.current) clearInterval(pollingRef.current);
                     }
-                } catch (err) {
+                }catch(err){
                     setStatus('failed');
                     setError('Could not get job status.');
-                    if (pollingRef.current) clearInterval(pollingRef.current);
+                    if(pollingRef.current) clearInterval(pollingRef.current);
                 }
             }, 3000);
         }
 
         // Cleanup function
         return () => {
-            if (pollingRef.current) {
+            if(pollingRef.current){
                 clearInterval(pollingRef.current);
             }
         };
     }, [jobId, status]);
 
     const submitAssignment = async () => {
-        if (!file) return;
+        if(!file) return;
 
         setStatus('uploading');
         setError(null);
         setProgress(0);
         setJobId(null);
 
-        try {
+        try{
             const data = await solveAssignment(file);
             setJobId(data.jobId);
             setStatus('processing');
-        } catch (err) {
+        }catch(err){
             setStatus('failed');
             setError('Failed to upload file.');
         }

@@ -5,11 +5,11 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node dist/index.js",
     "dev": "nodemon",
     "dev:server": "ts-node-dev src/index.ts",
     "dev:worker": "ts-node-dev src/worker.ts",
-    "build": "tsc"
+    "build": "tsc",
+    "start": "pm2-runtime start ecosystem.config.js"
   },
   "keywords": [],
   "author": "",
@@ -36,6 +36,7 @@
     "multer": "^2.0.2",
     "pdf-parse": "^1.1.1",
     "pdfkit": "^0.17.2",
+    "pm2": "^7.0.1",
     "uuid": "^13.0.0"
   },
   "devDependencies": {

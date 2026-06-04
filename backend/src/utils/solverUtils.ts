@@ -9,7 +9,7 @@ const MODEL_NAME = 'gemini-1.5-flash-latest';
 // Setup for the original axios function
 const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/${MODEL_NAME}:generateContent?key=${GEMINI_API_KEY}`;
 
-// 🧠 SDK setup for the new Gemini function
+// SDK setup for the new Gemini function
 const genAI = new GoogleGenerativeAI(GEMINI_API_KEY);
 const model = genAI.getGenerativeModel({ model: MODEL_NAME });
 
