@@ -1,3 +1,9 @@
+import fs from 'fs';
+
+// Auto-create directories on the production server to prevent Multer crashes
+if (!fs.existsSync('uploads')) fs.mkdirSync('uploads');
+if (!fs.existsSync('output')) fs.mkdirSync('output');
+
 import express from 'express';
 import dotenv from 'dotenv';
 import cors from 'cors';
