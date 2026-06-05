@@ -5,7 +5,7 @@ import fs from 'fs';
 // Initializing the Gemini model
 const llm = new ChatGoogleGenerativeAI({
     apiKey: process.env.GEMINI_API_KEY,
-    model: "gemini-1.5-flash",
+    model: "gemini-3.1-flash-lite",
     temperature: 0.1,
 });
 

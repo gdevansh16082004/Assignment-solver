@@ -4,7 +4,7 @@ import { GoogleGenerativeAI } from '@google/generative-ai';
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY || '');
 
 // Define the model for text generation
-const llmModel = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+const llmModel = genAI.getGenerativeModel({ model: "gemini-3.1-flash-lite" });
 
 export async function getLLMSolution(prompt: string): Promise<string> {
     try {
