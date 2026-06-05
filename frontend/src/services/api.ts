@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const apiClient = axios.create({
-    baseURL: 'https://assignment-backend-edyk.onrender.com',
+    baseURL: 'https://assignment-backend-edyk.onrender.com/api',
 });
 
 export const solveAssignment = async (file: File) => {
