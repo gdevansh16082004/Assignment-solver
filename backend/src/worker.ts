@@ -8,7 +8,7 @@ import { splitIntoQuestionsWithGemini } from './utils/questionExtractor';
 
 const llm = new ChatGoogleGenerativeAI({
     apiKey: process.env.GEMINI_API_KEY,
-    model: "gemini-pro-latest",
+    model: "gemini-1.5-flash-8b",
 });
 
 import type { ConnectionOptions } from 'bullmq';

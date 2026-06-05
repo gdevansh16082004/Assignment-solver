@@ -4,7 +4,7 @@ import { GoogleGenerativeAI } from '@google/generative-ai';
 // --- Shared Constants and SDK Setup ---
 
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY as string;
-const MODEL_NAME = 'gemini-1.5-flash-latest'; 
+const MODEL_NAME = 'gemini-1.5-flash-8b'; 
 
 // Setup for the original axios function
 const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/${MODEL_NAME}:generateContent?key=${GEMINI_API_KEY}`;

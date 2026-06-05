@@ -6,7 +6,7 @@ import { GoogleGenerativeAI } from '@google/generative-ai';
 // --- Gemini SDK Setup ---
 // This is needed for the splitIntoQuestionsWithGemini function.
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY as string;
-const MODEL_NAME = 'gemini-1.5-flash-latest';
+const MODEL_NAME = 'gemini-1.5-flash-8b';
 const genAI = new GoogleGenerativeAI(GEMINI_API_KEY);
 const model = genAI.getGenerativeModel({ model: MODEL_NAME });
 
