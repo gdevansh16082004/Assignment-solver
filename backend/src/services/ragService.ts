@@ -6,7 +6,7 @@ import { RetrievalQAChain } from "langchain/chains";
 import { RecursiveCharacterTextSplitter } from "langchain/text_splitter";
 import { MistralAIEmbeddings } from "@langchain/mistralai";
 
-const llm = new ChatGoogleGenerativeAI({ apiKey: process.env.GEMINI_API_KEY, model: "gemini-1.5-flash-8b" });
+const llm = new ChatGoogleGenerativeAI({ apiKey: process.env.GEMINI_API_KEY, model: "gemini-1.5-flash" });
 
 // generating embeddings
 const embeddings = new MistralAIEmbeddings({
